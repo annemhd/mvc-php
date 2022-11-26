@@ -6,6 +6,8 @@ class Model
 {
     private $pdo;
     protected $table;
+    protected $column;
+    protected $value;
 
     public function __construct($table)
     {
@@ -17,6 +19,7 @@ class Model
         } catch (\PDOException $e) {
             echo $e->getMessage();
         }
+
         $this->table = $table;
     }
 
@@ -28,6 +31,12 @@ class Model
     public function all()
     {
         $statement = $this->getPDO()->query("SELECT * FROM {$this->table}");
+        return $statement->fetchAll();
+    }
+
+    public function where($column, $value)
+    {
+        $statement = $this->getPDO()->query("SELECT * FROM {$this->table} WHERE {$column} = {$value}");
         return $statement->fetchAll();
     }
 }

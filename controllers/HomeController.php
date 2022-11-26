@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\Post;
 use Models\User;
 use Source\Renderer;
 
@@ -11,6 +12,10 @@ class HomeController
     {
         $userModel = new User('users');
         $users = $userModel->all();
-        return Renderer::make('home/index', compact('users'));
+
+        $postModel = new Post('posts');
+        $posts = $postModel->all();
+
+        return Renderer::make('home/index', compact('users', 'posts'));
     }
 }

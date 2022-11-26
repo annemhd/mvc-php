@@ -8,15 +8,25 @@ class Router
 {
     private array $routes;
 
-    public function register($path, $action)
+    public function register($path, $action, $HTTPverb): void
     {
-        $this->routes[$path] = $action;
+        $this->routes[$HTTPverb][$path] = $action;
     }
 
-    public function resolve($uri)
+    public function get($path, $action)
+    {
+        $this->register($path, $action, 'GET');
+    }
+
+    public function post($path, $action)
+    {
+        $this->register($path, $action, 'POST');
+    }
+
+    public function resolve($uri, $HTTPverb)
     {
         $path  = explode('?', $uri)[0];
-        $action = $this->routes[$path];
+        $action = $this->routes[$HTTPverb][$path];
 
         if (is_callable($action)) {
             return $action();

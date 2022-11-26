@@ -34,3 +34,4 @@ class Renderer
         return $this->view();
     }
 }
+// preg_replace('#:([\w]+)#', '([^/]+)', $viewPath);
