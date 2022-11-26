@@ -8,9 +8,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "Router\\": "routes/",
-            "App\\": "app/",
-            "Database\\": "database/"
+            "Router\\": "router/",
+            "Exceptions\\": "exceptions/",
+            "Models\\": "models/",
+            "Controllers\\": "controllers/",
+            "Source\\": "src/"
         }
     },
     "require": {}
