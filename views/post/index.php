@@ -1,46 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+$title = 'Article';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tous les posts</title>
-</head>
+require_once BASE_VIEW_PATH . 'header.php';
+?>
 
-<body>
-    <a href="/">Retour</a><br>
+<a href="/">Retour</a><br>
 
-    <?php
+<?php
 
-    use Models\Comment;
-    use Models\Post;
+use Models\Comment;
+use Models\Post;
 
-    $postModel = new Post('posts');
-    $tablePost = $postModel->selectPost($_POST['id']);
+$postModel = new Post('posts');
+$tablePost = $postModel->selectPost($_POST['id']);
 
-    $commentModel = new Comment('comments');
-    $tableComment = $commentModel->selectComment($tablePost[0]->id);
+$commentModel = new Comment('comments');
+$tableComment = $commentModel->selectComment($tablePost[0]->id);
 
-    echo $tablePost[0]->id . '</br>';
-    echo $tablePost[0]->title . '</br>';
-    echo $tablePost[0]->content . '</br>';
-    echo $tablePost[0]->created_at . '</br>';
+echo $tablePost[0]->id . '</br>';
+echo $tablePost[0]->title . '</br>';
+echo $tablePost[0]->content . '</br>';
+echo $tablePost[0]->created_at . '</br>';
 
-    ?>
+?>
 
-    <?php foreach ($tableComment as $comment) : ?>
-        <?= $comment->username ?></br>
-        <?= $comment->content  ?></br>
-        <?= $comment->created_at  ?></br>
-    <?php endforeach ?>
+<?php foreach ($tableComment as $comment) : ?>
+    <?= $comment->username ?></br>
+    <?= $comment->content  ?></br>
+    <?= $comment->created_at  ?></br>
+<?php endforeach ?>
 
-    <form method="POST" action="/comment">
-        <input type="hidden" name="id_post" value="<?= $tablePost[0]->id ?>">
-        <input type="text" name="username">
-        <textarea name="content"></textarea>
-        <input type="submit" name="comment" value="Ajouter le commentaire">
-    </form>
-</body>
-
-</html>
+<form method="POST" action="/comment">
+    <input type="hidden" name="id_post" value="<?= $tablePost[0]->id ?>">
+    <input type="text" name="username">
+    <textarea name="content"></textarea>
+    <input type="submit" name="comment" value="Ajouter le commentaire">
+</form>
+<?php
+require_once BASE_VIEW_PATH . 'footer.php';

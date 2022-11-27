@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter un article</title>
-</head>
+<?php
+$title = 'Ajouter un articles';
 
-<body>
+require_once BASE_VIEW_PATH . 'header.php';
+?>
 
-    <?php
+<a href="/">Retour</a><br>
 
-    use Models\Post;
+<?php
 
-    $postModel = new Post('posts');
+use Models\Post;
 
-    if (isset($_POST['insertB'])) {
-        $req = 'title=:title, content=:content';
-        $values = ['title' => $_POST['title'], 'content' => $_POST['content']];
-        $postModel->insertPost($req, $values);
-        echo 'Article ajouté </br>';
-        echo '<a href="/">retour</a>';
-    } else {
+$postModel = new Post('posts');
 
-    ?>
+if (isset($_POST['insertB'])) {
+    $req = 'title=:title, content=:content';
+    $values = ['title' => $_POST['title'], 'content' => $_POST['content']];
+    $postModel->insertPost($req, $values);
+    echo 'Article ajouté </br>';
+    echo '<a href="/">retour</a>';
+} else {
 
-        <form method="POST" action="">
-            <input type="hidden" name="id">
-            <input type="text" name="title">
-            <input type="text" name="content">
-            <input type="submit" name="insertB" value="Ajouter">
-        </form>
+?>
 
-    <?php
+    <form method="POST" action="">
+        <input type="hidden" name="id">
+        <input type="text" name="title">
+        <input type="text" name="content">
+        <input type="submit" name="insertB" value="Ajouter">
+    </form>
 
-    }
+<?php
 
-    ?>
-</body>
+}
 
-</html>
+require_once BASE_VIEW_PATH . 'footer.php';
+?>
