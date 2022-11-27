@@ -8,4 +8,9 @@ class User extends Model
     {
         return $this->where('email', $value);
     }
+
+    public function selectUserPosts($value)
+    {
+        return $this->where('id_author', $value);
+    }
 }

@@ -11,14 +11,44 @@
 <body>
     <?php
 
+    use Models\Post;
     use Models\User;
 
-    $userModel = new User('users');
+    if ($_POST['password'] !== $tableUser[0]->password) {
+        echo 'Mauvais identifiants </br>';
+        echo '<a href="/user">retour</a>';
+    } else {
 
-    $table = $userModel->selectUser($_POST['email']);
+        $userModel = new User('users');
+        $tableUser = $userModel->selectUser($_POST['email']);
 
-    echo $table[0]->email . '</br>';
+        $postModel = new Post('posts');
+        $tablePosts = $postModel->selectUserPosts($tableUser[0]->id);
 
+    ?>
+
+        <form method="POST" action="/post">
+            <input type="submit" name="insert" value="Ajouter un article">
+        </form>
+        <?php
+
+        foreach ($tablePosts as $post) : ?>
+            <?= $post->title ?></br>
+            <?= $post->created_at ?>
+            <form method="POST" action="/post">
+                <input type="hidden" name="id" value="<?= $post->id ?>">
+                <input type="submit" name="read" value="Voir">
+            </form>
+            <form method="POST" action="/delete">
+                <input type="hidden" name="id" value="<?= $post->id ?>">
+                <input type="submit" name="delete" value="supprimer">
+            </form>
+            <form method="POST" action="/update">
+                <input type="hidden" name="id" value="<?= $post->id ?>">
+                <input type="submit" name="update" value="modifier">
+            </form>
+    <?php endforeach;
+    }
     ?>
 </body>
 

@@ -9,11 +9,6 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    $_SESSION['test'] = 'test';
-    echo $_SESSION['test'] . '<br>';
-    ?>
 
     <form method="POST" action="/insert">
         <input type="submit" name="insert" value="Ajouter un article">

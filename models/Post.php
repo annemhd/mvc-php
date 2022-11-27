@@ -9,6 +9,11 @@ class Post extends Model
         return $this->where('id', $value);
     }
 
+    public function selectUserPosts($value)
+    {
+        return $this->where('id_author', $value);
+    }
+
     public function insertPost($sql, $values)
     {
         return $this->insert($sql, $values);

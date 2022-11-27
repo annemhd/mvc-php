@@ -11,10 +11,12 @@
 <body>
 
     <?php
-    session_start();
-    echo 'Session: ' . $_SESSION['test'] . '<br>';
 
     use Models\Post;
+    use Source\Session;
+
+    $session = new Session();
+    echo $session->getAttribute('email');
 
     $postModel = new Post('posts');
 
@@ -28,6 +30,7 @@
     }
 
     ?>
+    <a href="/">Retour</a>
 </body>
 
 </html>

@@ -13,6 +13,7 @@ $router = new Router($_SERVER['REQUEST_URI']);
 $router->get('/', ['Controllers\HomeController', 'index']);
 
 $router->get('/user', ['Controllers\UserController', 'login']);
+$router->get('/dashboard', ['Controllers\UserController', 'dashboard']);
 $router->post('/dashboard', ['Controllers\UserController', 'dashboard']);
 
 $router->post('/post', ['Controllers\PostController', 'index']);
