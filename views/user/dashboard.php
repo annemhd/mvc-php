@@ -10,23 +10,18 @@
 
 <body>
     <?php
-    var_dump($_POST['email']);
-    ?>
-    <?php
-    session_start();
-    echo 'Session: ' . $_SESSION['test'] . '<br>';
+    // session_start();
+    // echo 'Session: ' . $_SESSION['test'] . '<br>';
 
     use Models\User;
 
     $userModel = new User('users');
 
-    if (isset($_POST['login'])) {
+    var_dump($userModel->selectUser('jane'));
 
-        $table = $userModel->selectUser($_POST['email']);
-        echo $table[0]->id . '</br>';
-        echo $table[0]->email . '</br>';
-        echo $table[0]->first_name . '</br>';
-    }
+    // var_dump($_POST['email']);
+
+    // var_dump($userModel->selectUser('janedoe@gmail.com'));
 
     ?>
 </body>

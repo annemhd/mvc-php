@@ -9,14 +9,14 @@ class UserController
 {
     public function login()
     {
-        $userModel = new User('posts');
+        $userModel = new User('users');
         $users = $userModel->all();
         return Renderer::make('user/index', compact('users'));
     }
 
     public function dashboard()
     {
-        $userModel = new User('posts');
+        $userModel = new User('users');
         $users = $userModel->all();
         return Renderer::make('user/dashboard', compact('users'));
     }
