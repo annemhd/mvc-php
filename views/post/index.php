@@ -9,28 +9,27 @@
 </head>
 
 <body>
+    <a href="/">Retour</a>
 
     <?php
 
     use Models\Post;
-    use Source\Session;
-
-    $session = new Session();
-    echo $session->getAttribute('email');
 
     $postModel = new Post('posts');
 
-    if (isset($_POST['read'])) {
-
-        $table = $postModel->selectPost($_POST['id']);
-        echo $table[0]->id . '</br>';
-        echo $table[0]->title . '</br>';
-        echo $table[0]->content . '</br>';
-        echo $table[0]->created_at . '</br>';
-    }
-
+    $table = $postModel->selectPost($_POST['id']);
+    echo $table[0]->id . '</br>';
+    echo $table[0]->title . '</br>';
+    echo $table[0]->content . '</br>';
+    echo $table[0]->created_at . '</br>';
     ?>
-    <a href="/">Retour</a>
+
+    <form method="POST" action="/comment">
+        <input type="hidden" name="id_post" value="<?= $table[0]->id ?>">
+        <input type="text" name="username">
+        <textarea name="content"></textarea>
+        <input type="submit" name="comment" value="Ajouter le commentaire">
+    </form>
 </body>
 
 </html>

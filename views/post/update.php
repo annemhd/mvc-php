@@ -19,7 +19,7 @@
     $table = $postModel->selectPost($_POST['id']);
 
     if (isset($_POST['updateB'])) {
-        $req = 'title=:title, content=:title';
+        $req = 'title=:title, content=:content';
         $values = ['title' => $_POST['title'], 'content' => $_POST['content']];
         $postModel->updatePost($_POST['id'], $req, $values);
         echo 'Màj </br>';

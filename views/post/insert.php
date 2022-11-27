@@ -17,7 +17,7 @@
     $postModel = new Post('posts');
 
     if (isset($_POST['insertB'])) {
-        $req = 'title=:title, content=:title';
+        $req = 'title=:title, content=:content';
         $values = ['title' => $_POST['title'], 'content' => $_POST['content']];
         $postModel->insertPost($req, $values);
         echo 'Article ajouté </br>';

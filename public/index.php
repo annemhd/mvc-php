@@ -21,4 +21,6 @@ $router->post('/insert', ['Controllers\PostController', 'insert']);
 $router->post('/update', ['Controllers\PostController', 'update']);
 $router->post('/delete', ['Controllers\PostController', 'delete']);
 
+$router->post('/comment', ['Controllers\ComController', 'comment']);
+
 (new App($router, ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']]))->run();
