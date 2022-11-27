@@ -39,4 +39,16 @@ class Model
         $statement = $this->getPDO()->query("SELECT * FROM {$this->table} WHERE {$column} = {$value}");
         return $statement->fetchAll();
     }
+
+    public function delete($column, $value)
+    {
+        $statement = $this->getPDO()->query("DELETE FROM {$this->table} WHERE {$column} = {$value}");
+        return $statement->fetchAll();
+    }
+
+    public function update($column, $value, $values)
+    {
+        $statement = $this->getPDO()->prepare("UPDATE {$this->table} SET {$values} WHERE {$column} = {$value}")->execute($values);
+        return $statement;
+    }
 }

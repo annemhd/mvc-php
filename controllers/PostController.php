@@ -15,10 +15,17 @@ class PostController
         return Renderer::make('post/index', compact('posts'));
     }
 
-    public function all()
+    public function update()
     {
         $postModel = new Post('posts');
         $posts = $postModel->all();
-        return Renderer::make('post/index', compact('posts'));
+        return Renderer::make('post/update', compact('posts'));
+    }
+
+    public function delete()
+    {
+        $postModel = new Post('posts');
+        $posts = $postModel->all();
+        return Renderer::make('post/delete', compact('posts'));
     }
 }

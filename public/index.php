@@ -11,6 +11,8 @@ define('BASE_VIEW_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRE
 $router = new Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', ['Controllers\HomeController', 'index']);
-$router->post('/post', ['Controllers\PostController', 'all']);
+$router->post('/post', ['Controllers\PostController', 'index']);
+$router->post('/update', ['Controllers\PostController', 'update']);
+$router->post('/delete', ['Controllers\PostController', 'delete']);
 
 (new App($router, ['uri' => $_SERVER['REQUEST_URI'], 'method' => $_SERVER['REQUEST_METHOD']]))->run();

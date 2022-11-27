@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tous les posts</title>
+    <title>Document</title>
 </head>
 
 <body>
@@ -14,17 +14,15 @@
     use Models\Post;
 
     $postModel = new Post('posts');
-
-    if (isset($_POST['read'])) {
-
-        $table = $postModel->selectPost($_POST['id']);
-        echo $table[0]->id . '</br>';
-        echo $table[0]->title . '</br>';
-        echo $table[0]->content . '</br>';
-        echo $table[0]->created_at . '</br>';
+    if (isset($_POST['delete'])) {
+        $table = $postModel->deletePost($_POST['id']);
     }
 
     ?>
+
+    Post supprimé
+
+    <a href="/">Retour</a>
 </body>
 
 </html>

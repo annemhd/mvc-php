@@ -15,9 +15,16 @@
         <?= $post->created_at ?>
         <form method="POST" action="/post">
             <input type="hidden" name="id" value="<?= $post->id ?>">
-            <input type="submit" value="Voir">
+            <input type="submit" name="read" value="Voir">
         </form>
-        <?php echo $_POST['submit'] ?>
+        <form method="POST" action="/delete">
+            <input type="hidden" name="id" value="<?= $post->id ?>">
+            <input type="submit" name="delete" value="supprimer">
+        </form>
+        <form method="POST" action="/update">
+            <input type="hidden" name="id" value="<?= $post->id ?>">
+            <input type="submit" name="update" value="modifier">
+        </form>
     <?php endforeach ?>
 </body>
 
