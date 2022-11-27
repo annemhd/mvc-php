@@ -36,7 +36,7 @@ class Model
 
     public function where($column, $value)
     {
-        $statement = $this->getPDO()->query("SELECT * FROM {$this->table} WHERE {$column} = {$value}");
+        $statement = $this->getPDO()->query("SELECT * FROM {$this->table} WHERE {$column} = '{$value}'");
         return $statement->fetchAll();
     }
 

@@ -5,23 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tous les posts</title>
+    <title>Tableau de bord</title>
 </head>
 
 <body>
     <?php
-    // session_start();
-    // echo 'Session: ' . $_SESSION['test'] . '<br>';
 
     use Models\User;
 
     $userModel = new User('users');
 
-    var_dump($userModel->selectUser('jane'));
+    $table = $userModel->selectUser($_POST['email']);
 
-    // var_dump($_POST['email']);
-
-    // var_dump($userModel->selectUser('janedoe@gmail.com'));
+    echo $table[0]->email . '</br>';
 
     ?>
 </body>
