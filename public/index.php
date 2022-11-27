@@ -12,6 +12,7 @@ $router = new Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', ['Controllers\HomeController', 'index']);
 $router->post('/post', ['Controllers\PostController', 'index']);
+$router->post('/insert', ['Controllers\PostController', 'insert']);
 $router->post('/update', ['Controllers\PostController', 'update']);
 $router->post('/delete', ['Controllers\PostController', 'delete']);
 

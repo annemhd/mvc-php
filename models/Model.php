@@ -46,9 +46,13 @@ class Model
         return $statement->fetchAll();
     }
 
+    public function insert($sql, $values)
+    {
+        return $this->getPDO()->prepare("INSERT INTO {$this->table} SET {$sql}")->execute($values);
+    }
+
     public function update($column, $value, $sql, $values)
     {
-        // $statement = $this->getPDO()->prepare("UPDATE {$this->table} SET {$sql} WHERE {$column} = {$value}")->execute($values);
         return $this->getPDO()->prepare("UPDATE {$this->table} SET {$sql} WHERE {$column} = {$value}")->execute($values);
     }
 }

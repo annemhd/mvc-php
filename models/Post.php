@@ -9,13 +9,18 @@ class Post extends Model
         return $this->where('id', $value);
     }
 
-    public function deletePost($value)
+    public function insertPost($sql, $values)
     {
-        return $this->delete('id', $value);
+        return $this->insert($sql, $values);
     }
 
     public function updatePost($value, $sql, $values)
     {
         return $this->update('id', $value, $sql, $values);
+    }
+
+    public function deletePost($value)
+    {
+        return $this->delete('id', $value);
     }
 }

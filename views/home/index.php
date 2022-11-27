@@ -9,6 +9,9 @@
 </head>
 
 <body>
+    <form method="POST" action="/insert">
+        <input type="submit" name="insert" value="Ajouter un article">
+    </form>
     <?php
     foreach ($posts as $post) : ?>
         <?= $post->title ?></br>

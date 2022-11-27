@@ -15,6 +15,13 @@ class PostController
         return Renderer::make('post/index', compact('posts'));
     }
 
+    public function insert()
+    {
+        $postModel = new Post('posts');
+        $posts = $postModel->all();
+        return Renderer::make('post/insert', compact('posts'));
+    }
+
     public function update()
     {
         $postModel = new Post('posts');
