@@ -16,18 +16,22 @@
 
     $postModel = new Post('posts');
 
-    foreach ($posts as $post) : ?>
-        <form method="POST" action="/update">
-            <input type="text" name="title" value="<?= $post->title ?>">
-            <input type="text" name="content" value="<?= $post->content ?>">
-            <input type="submit" name="update" value="Mettre à jour">
-        </form>
-    <?php endforeach;
+    $table = $postModel->selectPost($_POST['id']);
+    ?>
+    <form method="POST" action="/update">
+        <input type="hidden" name="id" value="<?= $table[0]->id ?>">
+        <input type="text" name="title" value="<?= $table[0]->title ?>">
+        <input type="text" name="content" value="<?= $table[0]->content ?>">
+        <input type="submit" name="update" value="Mettre à jour">
+    </form>
+    <?php
 
-    $test = 'title="' . $_POST['title'] . '", content="' . $_POST['content'] . '"';
-    $test = array($_POST['title']);
-    $postModel->updatePost($_POST['id'], $test);
-    var_dump($_POST['id']);
+    if (isset($_POST['update'])) {
+        $req = 'title=:title, content=:title';
+        $test = ['title' => $_POST['title'], 'content' => $_POST['content']];
+        $postModel->updatePost($_POST['id'], $req, $test);
+        echo 'mise a jour éffectuée';
+    }
 
     ?>
 </body>

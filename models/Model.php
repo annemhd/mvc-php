@@ -46,9 +46,9 @@ class Model
         return $statement->fetchAll();
     }
 
-    public function update($column, $value, $values)
+    public function update($column, $value, $sql, $values)
     {
-        $statement = $this->getPDO()->prepare("UPDATE {$this->table} SET {$values} WHERE {$column} = {$value}")->execute($values);
-        return $statement;
+        // $statement = $this->getPDO()->prepare("UPDATE {$this->table} SET {$sql} WHERE {$column} = {$value}")->execute($values);
+        return $this->getPDO()->prepare("UPDATE {$this->table} SET {$sql} WHERE {$column} = {$value}")->execute($values);
     }
 }

@@ -14,8 +14,8 @@ class Post extends Model
         return $this->delete('id', $value);
     }
 
-    public function updatePost($value, $values)
+    public function updatePost($value, $sql, $values)
     {
-        return $this->update('id', $value, $values);
+        return $this->update('id', $value, $sql, $values);
     }
 }
