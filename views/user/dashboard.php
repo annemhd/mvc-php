@@ -9,22 +9,23 @@
 </head>
 
 <body>
-
+    <?php
+    var_dump($_POST['email']);
+    ?>
     <?php
     session_start();
     echo 'Session: ' . $_SESSION['test'] . '<br>';
 
-    use Models\Post;
+    use Models\User;
 
-    $postModel = new Post('posts');
+    $userModel = new User('users');
 
-    if (isset($_POST['read'])) {
+    if (isset($_POST['login'])) {
 
-        $table = $postModel->selectPost($_POST['id']);
+        $table = $userModel->selectUser($_POST['email']);
         echo $table[0]->id . '</br>';
-        echo $table[0]->title . '</br>';
-        echo $table[0]->content . '</br>';
-        echo $table[0]->created_at . '</br>';
+        echo $table[0]->email . '</br>';
+        echo $table[0]->first_name . '</br>';
     }
 
     ?>

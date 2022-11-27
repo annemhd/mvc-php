@@ -11,6 +11,10 @@ define('BASE_VIEW_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRE
 $router = new Router($_SERVER['REQUEST_URI']);
 
 $router->get('/', ['Controllers\HomeController', 'index']);
+
+$router->get('/user', ['Controllers\UserController', 'login']);
+$router->post('/dashboard', ['Controllers\UserController', 'dashboard']);
+
 $router->post('/post', ['Controllers\PostController', 'index']);
 $router->post('/insert', ['Controllers\PostController', 'insert']);
 $router->post('/update', ['Controllers\PostController', 'update']);

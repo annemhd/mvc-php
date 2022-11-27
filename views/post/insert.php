@@ -16,8 +16,6 @@
 
     $postModel = new Post('posts');
 
-    // $table = $postModel->selectPost($_POST['id']);
-
     if (isset($_POST['insertB'])) {
         $req = 'title=:title, content=:title';
         $values = ['title' => $_POST['title'], 'content' => $_POST['content']];

@@ -4,5 +4,8 @@ namespace Models;
 
 class User extends Model
 {
-    // protected $table = 'users';
+    public function selectUser($value)
+    {
+        return $this->where('email', $value);
+    }
 }
