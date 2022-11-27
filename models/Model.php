@@ -30,7 +30,7 @@ class Model
 
     public function all()
     {
-        $statement = $this->getPDO()->query("SELECT * FROM {$this->table}");
+        $statement = $this->getPDO()->query("SELECT * FROM {$this->table} ORDER BY created_at DESC");
         return $statement->fetchAll();
     }
 
