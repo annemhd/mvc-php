@@ -11,8 +11,13 @@
 <body>
     <?php
     foreach ($posts as $post) : ?>
-        <?= $post->id ?>
-        <?= $post->title ?>
+        <?= $post->title ?></br>
+        <?= $post->created_at ?>
+        <form method="POST" action="/post">
+            <input type="hidden" name="id" value="<?= $post->id ?>">
+            <input type="submit" value="Voir">
+        </form>
+        <?php echo $_POST['submit'] ?>
     <?php endforeach ?>
 </body>
 

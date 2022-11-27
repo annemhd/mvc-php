@@ -13,14 +13,14 @@
 
     use Models\Post;
 
-    foreach ($posts as $post) : ?>
-        <?= $post->id ?>
-        <?= $post->title ?>
-        <?php
-        $test = new Post('posts');
-        $test->postById($post->id);
-        ?>
-    <?php endforeach ?>
+    $postModel = new Post('posts');
+    $table = $postModel->postById($_POST['id']);
+    echo $table[0]->id . '</br>';
+    echo $table[0]->title . '</br>';
+    echo $table[0]->content . '</br>';
+    echo $table[0]->created_at . '</br>';
+
+    ?>
 </body>
 
 </html>
