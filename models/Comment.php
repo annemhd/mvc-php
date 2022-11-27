@@ -6,7 +6,7 @@ class Comment extends Model
 {
     public function selectComment($value)
     {
-        return $this->where('id', $value);
+        return $this->where('id_post', $value);
     }
 
     public function insertComment($sql, $values)
